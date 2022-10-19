@@ -32,7 +32,7 @@ int main(){
     Sumts = 0.0;
     Sumtd = 0.0;
     i = 0;
-    
+     
     while(fscanf(txt, "%lf %lf", &ts, &td) != EOF){ // O programa lê a primeira coluna (tempo de subida) e a segunda coluna (tempo de descida)
 
         Sumts = Sumts + ts;
