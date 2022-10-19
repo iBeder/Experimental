@@ -25,7 +25,7 @@ int main(){
     txt = fopen(file1, "r");
 
     U = 350.0; // Tensão
-    eta = 17.2e-6; // Coeficiente de viscosidade do ar
+    eta = 18.2e-6; // Coeficiente de viscosidade do ar
     rhoOleo = 1030.0; // Densidade do óleo
     rhoAR = 1.293; // Densidade do ar
     d = (0.89e-3/(3.0)); // Distância percorrida pelas gotas
