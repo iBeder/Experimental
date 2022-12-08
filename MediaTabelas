@@ -1,0 +1,60 @@
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
+//%%%%%%%%% Vídeo 28 - Média de tabelas de dados %%%%%%%%%//
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
+//%%%%%%%% Elaborado por: Igor Beder Burti R. %%%%%%%%%%%%//
+//%%%%%%%%%% Última modificação: 01/12/2022 %%%%%%%%%%%%%%//
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+
+	char nomeEntrada[50], nomeSaida[50];
+	int narquivos, i, k;
+	double x[1000], y[1000], r1, r2, r3;
+	FILE *entrada1, *entradas, *saida;
+
+	printf("Qual o nome do arquivo a ser lido?\n");
+	scanf("%s", nomeEntrada);
+	entrada1 = fopen(nomeEntrada, "r");
+
+	printf("Número de arquivos: ");
+	scanf("%d", &narquivos);
+
+	char nomes[narquivos][50];
+
+	for(i = 1; i <= narquivos; i++){
+
+		fscanf(entrada1, "%s", nomes[i]);
+
+	}
+
+	printf("Qual o nome do arquivo de saída?\n");
+	scanf("%s", nomeSaida);
+	saida = fopen(nomeSaida, "w");
+
+	for(i = 1; i <= narquivos; i++){
+
+		entradas = fopen(nomes[i], "r");
+		k = 0;
+		while(fscanf(entradas, "%lf %lf %lf", &r1, &r2, &r3) != EOF){
+
+			k++;
+			x[k] = x[k] + r3/(double)narquivos;
+			y[k] = y[k] + r2/(double)narquivos;
+
+		}
+
+		fclose(entradas);
+
+	}
+
+	for(i = 1; i <= k; i++){
+
+		fprintf(saida, "%lf %lf\n", x[i], y[i]);
+	}
+
+	return 0;
+
+}
